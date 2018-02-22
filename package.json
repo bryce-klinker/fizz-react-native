@@ -31,7 +31,7 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/react-native-app.app",
-        "build": "xcodebuild -project ios/react-native-app.xcworkspace -scheme react-native-app -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "build": "xcodebuild -workspace ios/react-native-app.xcworkspace -scheme react-native-app -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 8"
       }
