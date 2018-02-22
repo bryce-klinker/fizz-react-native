@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0"
+    "concurrently": "^3.5.1",
+    "detox": "^7.1.0",
+    "mocha": "^5.0.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -13,7 +13,10 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js"
+    "test": "node node_modules/jest/bin/jest.js",
+    "pree2e": "concurrently \"detox build\" \"yarn build:ios\"",
+    "e2e": "detox test",
+    "build:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --entry-file=App.js --bundle-output='./ios/react-native-app/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "jest": {
     "preset": "jest-expo"
@@ -22,10 +25,6 @@
     "expo": "^25.0.0",
     "react": "16.2.0",
     "react-native": "0.52.0"
-  },
-  "devDependencies": {
-    "detox": "^7.1.0",
-    "mocha": "^5.0.1"
   },
   "detox": {
     "configurations": {
