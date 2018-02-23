@@ -3,10 +3,11 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 
 export default class App extends React.Component {
   render() {
-    const { getValue } = this.props;
+    const { getValue, value } = this.props;
     return (
       <View style={styles.container}>
         <Button title="FizzBuzz" onPress={getValue || function(){}}/>
+        <Text>{value}</Text>
       </View>
     );
   }

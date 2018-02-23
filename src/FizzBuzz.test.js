@@ -15,7 +15,7 @@ describe('FizzBuzz', () => {
     it('should display value', () => {
         const fizzBuzz = shallow(<FizzBuzz value="Fizz"/>);
         const text = fizzBuzz.find('Text');
-        expect(text.text()).toContain('Fizz');
+        expect(text.dive().text()).toContain('Fizz');
     })
 })
 
