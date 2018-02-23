@@ -13,11 +13,11 @@ describe('Show Fizz Buzz', () => {
     describe('When I tap the FizzBuzz button', () => {
 
       beforeEach(async () => {
-        await element(by.text('FizzBuzz')).tap();
+        await element(by.id('FizzBuzz')).tap();
       })
 
       it('Then I see Fizz', async () => {
-        await expect(element(by.id('FizzBuzzLabel'))).toHaveText('Fizz');
+        await waitFor(element(by.id('FizzBuzzLabel'))).toHaveText('Fizz');
       })
     })
   });

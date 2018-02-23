@@ -24,7 +24,7 @@
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js",
     "pree2e": "yarn build:ios && detox build",
-    "e2e": "detox test",
+    "e2e": "detox test --configuration ios.sim.debug --cleanup",
     "build:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --entry-file=./index.ios.js --bundle-output='./ios/react-native-app/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "jest": {

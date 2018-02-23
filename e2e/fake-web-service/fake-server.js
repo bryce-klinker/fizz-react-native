@@ -20,7 +20,7 @@ function startServerAsync(port) {
       app.get('/', (req, res) => {
         res.json({ Value: currentValue });
       });
-      app.listen(port, (err) => {
+      httpServer = app.listen(port, (err) => {
         if (err)
             reject(err);
         else
@@ -29,4 +29,8 @@ function startServerAsync(port) {
     })
 }
 
-module.exports = { startServer, setValue };
+function stopServer() {
+  httpServer.close();
+}
+
+module.exports = { startServer, stopServer, setValue };

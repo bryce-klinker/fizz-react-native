@@ -6,7 +6,7 @@ export default class App extends React.Component {
     const { getValue, value } = this.props;
     return (
       <View style={styles.container}>
-        <Button title="FizzBuzz" onPress={getValue || function(){}}/>
+        <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue || function(){}}/>
         <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
     );
