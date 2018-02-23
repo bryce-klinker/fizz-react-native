@@ -8,8 +8,7 @@ describe('FizzBuzz', () => {
         let gotValue = false;
 
         const rendered = shallow(<FizzBuzz getValue={() => gotValue = true}/>);
-        console.log(rendered);
-        rendered.find('Button').simulate('click', null);
+        rendered.find('Button').simulate('press', null);
         expect(gotValue).toBe(true);
     })
 })
