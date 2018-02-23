@@ -1,9 +1,9 @@
-import 'react-native';
 import React from 'react';
-import FizzBuzz from './FizzBuzz';
 import {shallow} from "enzyme";
 
-describe('FizzBuzz', () => {
+import FizzBuzz from './FizzBuzz.js';
+
+describe('Components:FizzBuzz', () => {
     it('should get fizz buzz value', () => {
         let gotValue = false;
 

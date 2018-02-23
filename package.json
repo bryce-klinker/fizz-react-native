@@ -8,6 +8,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
+    "express": "^4.16.2",
     "jest": "^22.2",
     "jest-expo": "^25.1.0",
     "mocha": "^5.0.1",
@@ -23,7 +24,7 @@
     "test": "node node_modules/jest/bin/jest.js",
     "pree2e": "yarn build:ios && detox build",
     "e2e": "detox test",
-    "build:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --entry-file=index.ios.js --bundle-output='./ios/react-native-app/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --entry-file=./index.ios.js --bundle-output='./ios/react-native-app/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "jest": {
     "preset": "react-native",

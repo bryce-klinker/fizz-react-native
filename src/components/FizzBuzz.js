@@ -7,7 +7,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="FizzBuzz" onPress={getValue || function(){}}/>
-        <Text>{value}</Text>
+        <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
     );
   }
