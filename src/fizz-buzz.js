@@ -17,6 +17,7 @@ export function evaluate(value) {
 }
 
 export async function getCurrent() {
-  return await fetch('http://localhost:9000/')
-    .then(res => res.body);
+  return await fetch('http://10.3.10.244:9000/')
+    .then(res => res.json())
+    .catch(err => err);
 }

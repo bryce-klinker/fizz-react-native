@@ -45,11 +45,18 @@ describe('fizz-buzz', () => {
 
   describe('getCurrent', () => {
     it('should return value from server', async () => {
-      fetch.mockResponse({ Value: 7 });
+      fetch.mockResponse(JSON.stringify({ Value: 7 }));
 
       const actual = await getCurrent();
-      expect(fetch).toHaveBeenCalledWith('http://localhost:9000/');
+      expect(fetch).toHaveBeenCalledWith('http://10.3.10.244:9000/');
       expect(actual).toEqual({ Value: 7 });
+    })
+
+    it('should return error if server call fails', async () => {
+      fetch.mockReject('not good');
+
+      const actual = await getCurrent();
+      expect(actual).toEqual('not good');
     })
   })
 })
