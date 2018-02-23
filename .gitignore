@@ -20,3 +20,4 @@ yarn-error.log*
 **/xcuserdata/
 **/.DS_Store
 **/main.jsbundle*
+**/.idea

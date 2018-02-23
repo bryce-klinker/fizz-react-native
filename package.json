@@ -5,7 +5,14 @@
   "devDependencies": {
     "concurrently": "^3.5.1",
     "detox": "^7.1.0",
-    "mocha": "^5.0.1"
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "jest": "^22.2",
+    "jest-expo": "^25.1.0",
+    "mocha": "^5.0.1",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -19,7 +26,16 @@
     "build:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --entry-file=index.ios.js --bundle-output='./ios/react-native-app/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native",
+    "testMatch": [
+      "**/?(*.)test.js?(x)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ]
   },
   "dependencies": {
     "expo": "^25.0.0",
