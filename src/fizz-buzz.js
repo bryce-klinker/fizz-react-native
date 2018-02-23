@@ -15,3 +15,8 @@ export function evaluate(value) {
   }
   return isFizz(value) ? 'Fizz': `${value}`;
 }
+
+export async function getCurrent() {
+  return await fetch('http://localhost:9000/')
+    .then(res => res.body);
+}

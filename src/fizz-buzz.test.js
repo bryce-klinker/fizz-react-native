@@ -1,4 +1,4 @@
-import {evaluate} from "./fizz-buzz";
+import {evaluate, getCurrent} from "./fizz-buzz";
 
 describe('fizz-buzz', () => {
   describe('evaluate', () => {
@@ -40,6 +40,16 @@ describe('fizz-buzz', () => {
     it('should return value if not divisible by three or five', () => {
       const actual = evaluate(8);
       expect(actual).toBe('8')
+    })
+  })
+
+  describe('getCurrent', () => {
+    it('should return value from server', async () => {
+      fetch.mockResponse({ Value: 7 });
+
+      const actual = await getCurrent();
+      expect(fetch).toHaveBeenCalledWith('http://localhost:9000/');
+      expect(actual).toEqual({ Value: 7 });
     })
   })
 })
