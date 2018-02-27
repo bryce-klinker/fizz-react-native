@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import {FizzBuzz} from "./fizz-buzz/components/FizzBuzz";
+import {evaluate, getCurrent} from "./fizz-buzz/fizz-buzz";
 
 export default class App extends React.Component {
+    state = { value: '' };
+
+    async getLatest() {
+        const latest = await getCurrent();
+        this.setState({ value: evaluate(latest.Value) });
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Shake your phone to open the developer menu.</Text>
+                <FizzBuzz getValue={() => this.getLatest()} value={this.state.value}/>
             </View>
         );
     }

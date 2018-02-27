@@ -6,23 +6,12 @@ export interface FizzBuzzProps {
   value?: string;
 }
 
-export class FizzBuzz extends React.Component<FizzBuzzProps> {
-  render() {
-    const { getValue, value } = this.props;
-    return (
-      <View style={styles.container}>
-        <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue || function(){}}/>
-        <Text testID="FizzBuzzLabel">{value}</Text>
+export const FizzBuzz = (props: FizzBuzzProps) => {
+  const { getValue, value } = props;
+  return (
+      <View>
+          <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue || function(){}}/>
+          <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  );
+};
