@@ -1,0 +1,3 @@
+rootProject.name = 'fizzreactnative'
+
+include ':app'
