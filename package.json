@@ -8,6 +8,7 @@
     "@types/jest": "^22.1.3",
     "@types/react": "^16.0.38",
     "@types/react-native": "^0.52.13",
+    "@types/react-navigation": "^1.2.1",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "concurrently": "^3.5.1",
     "detox": "^7.1.0",
@@ -73,7 +74,8 @@
   "dependencies": {
     "react": "16.2.0",
     "react-dom": "^16.2.0",
-    "react-native": "0.52.0"
+    "react-native": "0.52.0",
+    "react-navigation": "^1.2.1"
   },
   "detox": {
     "configurations": {
