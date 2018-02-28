@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
+import {STYLES} from '../../shared/styles';
 
 export interface FizzBuzzProps {
   getValue?: () => void;
@@ -7,10 +8,11 @@ export interface FizzBuzzProps {
 }
 
 export const FizzBuzz = (props: FizzBuzzProps) => {
-  const { getValue, value } = props;
+  const { value } = props;
+  const getValue = props.getValue || (() => {});
   return (
-      <View>
-          <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue || function(){}}/>
+      <View style={STYLES.centered}>
+          <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue}/>
           <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
   );
