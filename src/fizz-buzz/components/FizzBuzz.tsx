@@ -12,7 +12,7 @@ export const FizzBuzz = (props: FizzBuzzProps) => {
   const getValue = props.getValue || (() => {});
   return (
       <View style={STYLES.centered}>
-          <Button title="FizzBuzz" testID="FizzBuzz" onPress={getValue}/>
+          <Button title="FizzBuzz" testID="FizzBuzzButton" onPress={getValue}/>
           <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
   );

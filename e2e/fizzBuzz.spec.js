@@ -13,7 +13,7 @@ describe('Show Fizz Buzz', () => {
     describe('When I tap the FizzBuzz button', () => {
 
       beforeEach(async () => {
-        await element(by.id('FizzBuzz')).tap();
+        await element(by.id('FizzBuzzButton')).tap();
       })
 
       it('Then I see Fizz', async () => {
