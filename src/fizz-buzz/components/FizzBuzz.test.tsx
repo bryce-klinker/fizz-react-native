@@ -1,5 +1,5 @@
+import {shallow} from 'enzyme';
 import * as React from 'react';
-import {shallow} from "enzyme";
 
 import { FizzBuzz } from './FizzBuzz';
 
@@ -10,12 +10,11 @@ describe('Components:FizzBuzz', () => {
         const fizzBuzz = shallow(<FizzBuzz getValue={() => gotValue = true}/>);
         fizzBuzz.find('Button').simulate('press', null);
         expect(gotValue).toBe(true);
-    })
+    });
 
     it('should display value', () => {
         const fizzBuzz = shallow(<FizzBuzz value="Fizz"/>);
         const text = fizzBuzz.find('Text');
         expect(text.dive().text()).toContain('Fizz');
-    })
-})
-
+    });
+});
