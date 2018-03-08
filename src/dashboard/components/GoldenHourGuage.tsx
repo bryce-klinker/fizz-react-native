@@ -11,9 +11,10 @@ export interface GoldenHourGaugeProps {
 export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
     const { model } = props;
     const progress = ((Date.now() - Date.parse(model.checkInTimestamp)) / 60000) / 60;
+    const deviceSize = Dimensions.get('window');
     const style: ViewStyle = {
-        height: Dimensions.get('window').height - 100,
-        width: Dimensions.get('window').width - 100,
+        height: deviceSize.height - 100,
+        width: deviceSize.width - 100,
     };
 
     return (
@@ -27,6 +28,10 @@ export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
                     startAngle={-Math.PI * 0.8}
                     endAngle={Math.PI * 0.8}
                 />
+                <View style={{left: 150, top: 250, position: 'absolute'}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 28}}>HERE</Text>
+                    <Text>Minutes since arrival</Text>
+                </View>
                 <View style={{left: 65, top: 365, position: 'absolute'}}>
                     <Image source={require('../../shared/icons/checkin.png')} style={{borderRadius: 10, borderColor: COLORS.primary, borderWidth: 2}}/>
                     <Text>{model.checkInTimestamp}</Text>
