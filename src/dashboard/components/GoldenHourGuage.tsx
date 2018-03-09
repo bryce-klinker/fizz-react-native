@@ -10,6 +10,7 @@ import {LabsIcon} from './LabsIcon';
 import {GoldenHourCountDown} from './GoldenHourCountDown';
 import {getMinutesSinceCheckIn} from './helpers/get-time-since-checkin';
 import {CtScanReadIcon} from './CtScanReadIcon';
+import {TpaIcon} from './TpaIcon';
 
 export interface GoldenHourGaugeProps {
     model?: DashboardModel;
@@ -40,6 +41,7 @@ export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
                 <LabsIcon timestamp={model.labsTimestamp}/>
                 <CtScanIcon timestamp={model.ctScanTimestamp}/>
                 <CtScanReadIcon timestamp={model.ctScanReadTimestamp}/>
+                <TpaIcon timestamp={model.tpaTimestamp}/>
             </View>
         </View>
     );
