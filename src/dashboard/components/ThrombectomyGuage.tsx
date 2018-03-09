@@ -13,7 +13,6 @@ export const ThrombectomyGauge = (props: ThrombectomyGaugeProps) => {
         alignItems: 'center',
         borderColor: COLORS.accent,
     };
-
     return (
         <View style={{flex: 0.1}}>
             <Text style={{color: COLORS.muted}}>Thrombectomy</Text>
