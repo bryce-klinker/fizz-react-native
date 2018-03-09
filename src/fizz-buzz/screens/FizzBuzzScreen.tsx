@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import {View} from 'react-native';
 import {NavigationComponentProps } from 'react-native-navigation';
-import {STYLES} from '../../shared/styles';
+import {containerStyle} from '../../shared/styles';
 import {FizzBuzz} from '../components/FizzBuzz';
 import {evaluate, getCurrent} from '../fizz-buzz';
 
@@ -18,7 +18,7 @@ export class FizzBuzzScreen extends Component<NavigationComponentProps> {
 
     public render() {
         return (
-            <View style={STYLES.container}>
+            <View style={containerStyle}>
                 <FizzBuzz getValue={() => this.getLatest()} value={this.state.value}/>
             </View>
         );

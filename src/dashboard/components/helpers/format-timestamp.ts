@@ -1,6 +1,10 @@
 import * as moment from 'moment';
 
 export function formatTimestamp(timestamp: string): string {
+    if (!timestamp) {
+        return '';
+    }
+
     const date = moment(timestamp);
     return formatMinutes(date.get('hour'), date.get('minute'));
 }

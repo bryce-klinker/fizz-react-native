@@ -4,4 +4,5 @@ export interface DashboardModel {
     ctScanTimestamp?: string;
     ctScanReadTimestamp?: string;
     tpaTimestamp?: string;
+    thrombectomyTimestamp?: string;
 }

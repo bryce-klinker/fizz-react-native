@@ -17,7 +17,7 @@ export const GoldenHourCountDown = (props: GoldenHourCountDownProps) => {
     const minutesLeft = Math.floor((millisecondsLeft / 1000 / 60));
     const secondsLeft = Math.floor((millisecondsLeft / 1000) % 60);
     return (
-        <View style={{left: 110, top: 225, position: 'absolute'}}>
+        <View style={{left: 110, top: 100, position: 'absolute'}}>
             <Text style={{fontWeight: 'bold', fontSize: 50}}>
                 {formatMinutes(minutesLeft, secondsLeft)}
             </Text>

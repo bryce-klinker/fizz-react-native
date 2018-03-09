@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import {Button, View} from 'react-native';
 import {NavigationComponentProps} from 'react-native-navigation';
-import {STYLES} from '../../shared/styles';
+import {containerStyle} from '../../shared/styles';
 import {Dashboard} from '../components/Dashboard';
 import {DashboardModel} from '../models/dashboard.model';
 import {DashboardService} from '../services/dashboard.service';
@@ -28,7 +28,7 @@ export class DashboardScreen extends Component<DashboardScreenProps, DashboardSc
     public render() {
         const {model} = this.state;
         return (
-            <View style={STYLES.container}>
+            <View style={containerStyle}>
                 <Dashboard model={model} />
                 <Button onPress={() => this.refresh()} title="Refresh" />
             </View>

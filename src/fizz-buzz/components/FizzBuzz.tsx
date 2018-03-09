@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Text, View } from 'react-native';
-import {STYLES} from '../../shared/styles';
+import {centered} from '../../shared/styles';
 
 export interface FizzBuzzProps {
   getValue?: () => void;
@@ -11,7 +11,7 @@ export const FizzBuzz = (props: FizzBuzzProps) => {
   const { value } = props;
   const getValue = props.getValue || (() => {});
   return (
-      <View style={STYLES.centered}>
+      <View style={centered}>
           <Button title="FizzBuzz" testID="FizzBuzzButton" onPress={getValue}/>
           <Text testID="FizzBuzzLabel">{value}</Text>
       </View>
