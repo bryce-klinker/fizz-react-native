@@ -11,10 +11,11 @@ import {ThrombectomyGauge} from './ThrombectomyGuage';
 export interface DashboardProps {
     model?: DashboardModel;
     isDictating?: boolean;
+    dictationTime?: number;
 }
 
 export const Dashboard = (props: DashboardProps) => {
-    const { model, isDictating } = props;
+    const { model, isDictating, dictationTime } = props;
 
     if (!model) {
         return <LoadingIndicator />;
@@ -24,7 +25,7 @@ export const Dashboard = (props: DashboardProps) => {
         <View style={containerStyle}>
             <GoldenHourGauge model={model} />
             <ThrombectomyGauge timestamp={model.thrombectomyTimestamp}/>
-            <Dictation isDictating={isDictating} />
+            <Dictation isDictating={isDictating} dictationTime={dictationTime} />
         </View>
     );
 };

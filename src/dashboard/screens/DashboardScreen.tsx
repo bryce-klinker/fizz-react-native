@@ -15,11 +15,12 @@ export interface DashboardScreenProps extends NavigationComponentProps {
 export interface DashboardScreenState {
     model?: DashboardModel;
     isDictating?: boolean;
+    dictationTime?: number;
 }
 
 export class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenState> {
     public static Name = 'Dashboard';
-    public state = { model: null, isDictating: false };
+    public state = { model: null, isDictating: false, dictationTime: null };
     private service: DashboardService;
 
     public async componentDidMount() {
@@ -28,11 +29,11 @@ export class DashboardScreen extends Component<DashboardScreenProps, DashboardSc
     }
 
     public render() {
-        const {model, isDictating} = this.state;
+        const {model, isDictating, dictationTime} = this.state;
         const dictation = !isDictating ? 'Dictate' : 'Stop';
         return (
             <View style={containerStyle}>
-                <Dashboard model={model} isDictating={isDictating} />
+                <Dashboard model={model} isDictating={isDictating} dictationTime={dictationTime} />
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     <Button onPress={() => this.refresh()} title="Refresh" />
                     <Button onPress={() => this.toggleDictation()} title={dictation} />
@@ -65,11 +66,11 @@ export class DashboardScreen extends Component<DashboardScreenProps, DashboardSc
             SampleRate: 22050,
         });
 
-        AudioRecorder.onProgress = (data) => {
-            console.log(data);
+        AudioRecorder.onProgress = ({currentTime}) => {
+            this.setState({ dictationTime: currentTime });
         };
         AudioRecorder.onFinished = () => {
-            console.log('Finished');
+            this.setState({ dictationTime: null });
         }
     }
 
