@@ -1,8 +1,15 @@
 import * as React from 'react';
-import {Dimensions, Image, Text, View, ViewStyle} from 'react-native';
+import {Dimensions, LayoutChangeEvent, Text, View, ViewStyle} from 'react-native';
 import {ProgressCircle} from 'react-native-svg-charts';
+import {STYLES} from '../../shared/styles';
 import {COLORS} from '../../shared/styles/colors';
 import {DashboardModel} from '../models/dashboard.model';
+import {CheckInIcon} from './CheckinIcon';
+import {CtScanIcon} from './CtScanIcon';
+import {LabsIcon} from './LabsIcon';
+import {GoldenHourCountDown} from './GoldenHourCountDown';
+import {getMinutesSinceCheckIn} from './helpers/get-time-since-checkin';
+import {CtScanReadIcon} from './CtScanReadIcon';
 
 export interface GoldenHourGaugeProps {
     model?: DashboardModel;
@@ -10,7 +17,7 @@ export interface GoldenHourGaugeProps {
 
 export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
     const { model } = props;
-    const progress = ((Date.now() - Date.parse(model.checkInTimestamp)) / 60000) / 60;
+    const progress = getMinutesSinceCheckIn(model.checkInTimestamp) / 60;
     const deviceSize = Dimensions.get('window');
     const style: ViewStyle = {
         height: deviceSize.height - 100,
@@ -18,7 +25,7 @@ export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
     };
 
     return (
-        <View >
+        <View style={STYLES.container}>
             <Text>Golden Hour</Text>
             <View style={{flex: 1, alignItems: 'center'}}>
                 <ProgressCircle
@@ -28,14 +35,11 @@ export const GoldenHourGauge = (props: GoldenHourGaugeProps) => {
                     startAngle={-Math.PI * 0.8}
                     endAngle={Math.PI * 0.8}
                 />
-                <View style={{left: 150, top: 250, position: 'absolute'}}>
-                    <Text style={{fontWeight: 'bold', fontSize: 28}}>HERE</Text>
-                    <Text>Minutes since arrival</Text>
-                </View>
-                <View style={{left: 65, top: 365, position: 'absolute'}}>
-                    <Image source={require('../../shared/icons/checkin.png')} style={{borderRadius: 10, borderColor: COLORS.primary, borderWidth: 2}}/>
-                    <Text>{model.checkInTimestamp}</Text>
-                </View>
+                <GoldenHourCountDown timestamp={model.checkInTimestamp}/>
+                <CheckInIcon timestamp={model.checkInTimestamp}/>
+                <LabsIcon timestamp={model.labsTimestamp}/>
+                <CtScanIcon timestamp={model.ctScanTimestamp}/>
+                <CtScanReadIcon timestamp={model.ctScanReadTimestamp}/>
             </View>
         </View>
     );

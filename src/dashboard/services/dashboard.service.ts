@@ -1,15 +1,15 @@
+import * as moment from 'moment';
 import {DashboardModel} from '../models/dashboard.model';
 
-const oneMinuteInSeconds = 60000;
 export class DashboardService {
     public async getLatest(): Promise<DashboardModel> {
         await this.simulateWait();
         return {
-            checkInTimestamp: new Date(Date.now() - (oneMinuteInSeconds * 23)).toISOString(),
-            ctScanReadTimestamp: new Date(Date.now() + (oneMinuteInSeconds * 35)).toISOString(),
-            ctScanTimestamp: new Date(Date.now()).toISOString(),
-            labsTimestamp: new Date(Date.now() - (oneMinuteInSeconds * 13)).toISOString(),
-            tpaTimestamp: new Date(Date.now() + (oneMinuteInSeconds * 57)).toISOString(),
+            checkInTimestamp: moment().utc().subtract(23, 'minutes').toISOString(),
+            ctScanReadTimestamp: moment().utc().add(35, 'minutes').toISOString(),
+            ctScanTimestamp: moment().utc().toISOString(),
+            labsTimestamp: moment().utc().subtract(13, 'minutes').toISOString(),
+            tpaTimestamp: moment().utc().add(57, 'minutes').toISOString(),
         };
     }
 
