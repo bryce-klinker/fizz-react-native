@@ -12,5 +12,5 @@ export function formatTimestamp(timestamp: string): string {
 export function formatMinutes(minutes: number, seconds: number): string {
     const minutesValue = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const secondsValue = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${minutesValue}:${secondsValue}`;
+    return `${minutesValue}.${secondsValue}`;
 }

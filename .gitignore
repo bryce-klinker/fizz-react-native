@@ -21,4 +21,6 @@ yarn-error.log*
 **/lib
 **/.idea
 **/coverage
-
+**/.gradle
+local.properties
+.DS_Store

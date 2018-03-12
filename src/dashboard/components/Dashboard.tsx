@@ -6,7 +6,6 @@ import {containerStyle} from '../../shared/styles';
 import {DashboardModel} from '../models/dashboard.model';
 import {Dictation} from './Dictation';
 import {GoldenHourGauge} from './GoldenHourGuage';
-import {ThrombectomyGauge} from './ThrombectomyGuage';
 
 export interface DashboardProps {
     model?: DashboardModel;
@@ -23,8 +22,9 @@ export const Dashboard = (props: DashboardProps) => {
 
     return (
         <View style={containerStyle}>
-            <GoldenHourGauge model={model} />
-            <ThrombectomyGauge timestamp={model.thrombectomyTimestamp}/>
+            <View style={{flex: 0.8}}>
+                <GoldenHourGauge model={model} />
+            </View>
             <Dictation isDictating={isDictating} dictationTime={dictationTime} />
         </View>
     );

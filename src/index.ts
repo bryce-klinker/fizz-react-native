@@ -7,12 +7,14 @@ registerScreens();
 
 Navigation.startTabBasedApp({
     tabs: [
+        // {
+        //     icon: require('./shared/icons/times.png'),
+        //     label: 'FizzBuzz',
+        //     screen: `${APP_NAME}.${FizzBuzzScreen.Name}`,
+        //     title: 'FizzBuzz',
+        // },
         {
-            label: 'FizzBuzz',
-            screen: `${APP_NAME}.${FizzBuzzScreen.Name}`,
-            title: 'FizzBuzz',
-        },
-        {
+            icon: require('./shared/icons/patients.png'),
             label: 'Dashboard',
             screen: `${APP_NAME}.${DashboardScreen.Name}`,
             title: 'Dashboard',

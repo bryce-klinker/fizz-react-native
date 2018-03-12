@@ -73,7 +73,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "lib/index.android.js"
+    entryFile: "lib/index.js"
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -94,8 +94,8 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.fizzreactnative"
@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-navigation')
     compile project(':react-native-audio')
     compile project(':react-native-svg')
     compile fileTree(dir: "libs", include: ["*.jar"])
