@@ -9,7 +9,7 @@ export interface DictationProps {
 export const Dictation = (props: DictationProps) => {
     const {isDictating, dictationTime} = props;
     return (
-        <View style={{flex: 0.3, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{flex: 0.1, alignItems: 'center', justifyContent: 'center'}}>
             { isDictating ? <Text>{Math.round(dictationTime)}</Text> : null }
         </View>
     );

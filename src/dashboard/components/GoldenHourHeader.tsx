@@ -15,13 +15,13 @@ export const GoldenHourHeader = (props: GoldenHourHeaderProps) => {
     return (
         <View style={{flexDirection: 'row'}}>
             <View style={{flexDirection: 'column', flex: 1}}>
-                <Text style={{fontWeight: 'bold'}}>Golden hour</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 16}}>Golden hour</Text>
                 <View style={{flexDirection: 'row'}}>
                     <Text style={{color: COLORS.muted}}>
                         {`${minutesValue}:${secondsValue}`} |
                     </Text>
                     <Text style={{color: COLORS.textDefault}}>
-                        Total time: <Text style={{fontWeight: 'bold'}}>{formatMinutes(minutes, seconds)}</Text>
+                        &nbsp;Total time: <Text style={{fontWeight: 'bold'}}>{formatMinutes(minutes, seconds)}</Text>
                     </Text>
                 </View>
             </View>
