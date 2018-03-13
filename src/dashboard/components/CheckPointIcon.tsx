@@ -22,13 +22,14 @@ export const CheckPointIcon = (props: CheckPointIconProps) => {
         position: 'absolute',
         top,
     };
-    const text = timestamp
-        ? <Text style={{...iconTextStyle, color: COLORS.white}}>{formatTimestamp(timestamp)}</Text>
-        : undefined;
+    if (!timestamp) {
+        return null;
+    }
+
     return (
         <View style={style}>
             <Image source={source} />
-            {text}
+            <Text style={{...iconTextStyle, color: COLORS.white}}>{formatTimestamp(timestamp)}</Text>
         </View>
     );
-}
+};

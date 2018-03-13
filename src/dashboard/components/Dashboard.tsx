@@ -26,7 +26,7 @@ export const Dashboard = (props: DashboardProps) => {
             <View style={{flex: 0.7}}>
                 <GoldenHourGauge model={model} />
             </View>
-            <View style={{flex: 0.2, marginTop: 15}}>
+            <View style={{flex: 0.15, marginTop: 15}}>
                 <PostProcedure />
             </View>
             <View style={{flex: 0.1}}>
