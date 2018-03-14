@@ -48,7 +48,7 @@ export class GoldenHourGauge extends React.PureComponent<GoldenHourGaugeProps, G
                                   seconds={secondsSinceArrival}
                 />
                 <View style={{flex: 1, alignItems: 'center', flexDirection: 'column', paddingTop: 15}}>
-                    <View ref="ProgressCircle" onLayout={() => this.onLayout()}>
+                    <View style={{flex: 1}} ref="ProgressCircle" onLayout={() => this.onLayout()}>
                         <ProgressCircle
                             style={gaugeSize}
                             progress={progress}
@@ -86,9 +86,11 @@ export class GoldenHourGauge extends React.PureComponent<GoldenHourGaugeProps, G
         }
 
         const { model } = this.props;
+        const {progressCircleHeight, progressCircleWidth, progressCircleX, progressCircleY} = this.state;
         return <GoldenHourCheckPoints model={model}
-                                      x={this.state.progressCircleX}
-                                      y={this.state.progressCircleY}
+                                      gaugeSize={{height: progressCircleHeight, width: progressCircleWidth}}
+                                      x={progressCircleX}
+                                      y={progressCircleY}
               />;
     }
 }

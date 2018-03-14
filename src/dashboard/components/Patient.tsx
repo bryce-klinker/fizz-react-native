@@ -26,9 +26,20 @@ export const Patient = (props: PatientProps) => {
     const month = dob.get('month') < 10 ? `0${dob.get('month')}` : `${dob.get('month')}`;
     const day = dob.get('day') < 10 ? `0${dob.get('day')}` : `${dob.get('day')}`;
     const year = dob.get('year');
+    const style = {
+        borderBottomColor: COLORS.muted,
+        borderBottomWidth: 1,
+        borderLeftColor: COLORS.muted,
+        borderLeftWidth: 1,
+        borderRightColor: COLORS.muted,
+        borderRightWidth: 1,
+        height: 100,
+        padding: 15,
+        width: 110,
+    };
     return (
-        <TouchableHighlight onPress={() => onTouched(patient)}>
-            <View style={{padding: 15, height: 100, width: 110, flexDirection: 'column', borderWidth: 1, borderColor: COLORS.muted}}>
+        <TouchableHighlight style={style} onPress={() => onTouched(patient)}>
+            <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={{height: 2, width: 30, backgroundColor: getStatusColor(patient.status)}}></View>
                 <Text style={{flex: 1, fontWeight: 'bold', fontSize: 14}}>
                     {`${patient.lastName}, ${patient.firstName}`}

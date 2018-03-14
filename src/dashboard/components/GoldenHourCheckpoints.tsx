@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {Size} from '../../shared/models/size';
 import {DashboardModel} from '../models/dashboard.model';
 import {CheckPointIcon} from './CheckPointIcon';
+import {toRadians} from './helpers/convert-degrees-to-radians';
 
 interface GoldenHourCheckPointsProps {
     model?: DashboardModel;
@@ -14,36 +15,38 @@ interface GoldenHourCheckPointsProps {
 }
 
 export const GoldenHourCheckPoints = (props: GoldenHourCheckPointsProps) => {
-    const {model, x, y} = props;
+    const {model, x, y, gaugeSize: { height, width}} = props;
+    const centerPoint = { x: x - 15, y: y - 70};
+    const radius = Math.min(height, width) + 10;
     return (
-        <View>
+        <View style={{flex: 1}}>
             <CheckPointIcon timestamp={model.checkInTimestamp}
                             source={require('../../shared/icons/checkin.png')}
-                            top={-y + 15}
-                            left={x - 100}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(130)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(130)))}
             />
 
             <CheckPointIcon timestamp={model.labsTimestamp}
                             source={require('../../shared/icons/labs.png')}
-                            top={-y - 85}
-                            left={x - 160}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(180)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(180)))}
             />
 
             <CheckPointIcon timestamp={model.ctScanTimestamp}
                             source={require('../../shared/icons/ct-scan.png')}
-                            top={-y - 225}
-                            left={x - 100}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(230)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(230)))}
             />
             <CheckPointIcon timestamp={model.ctScanReadTimestamp}
                             source={require('../../shared/icons/ct-scan-read.png')}
-                            top={-y - 235}
-                            left={x + 50}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(275)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(275)))}
             />
 
             <CheckPointIcon timestamp={model.ctScanReadTimestamp}
                             source={require('../../shared/icons/tpa.png')}
-                            top={-y - 160}
-                            left={x + 115}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(300)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(300)))}
             />
         </View>
     );

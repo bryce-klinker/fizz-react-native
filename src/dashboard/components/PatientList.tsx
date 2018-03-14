@@ -4,6 +4,7 @@ import {PatientModel} from '../models/patient.model';
 import {Patient} from './Patient';
 import {PatientSearch} from './PatientSearch';
 import {SearchParametersModel} from '../models/search-parameters.model';
+import {COLORS} from '../../shared/styles/colors';
 
 export interface PatientListProps {
     searchParameters?: SearchParametersModel;
