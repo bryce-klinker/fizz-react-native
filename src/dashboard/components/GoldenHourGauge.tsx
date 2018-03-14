@@ -38,59 +38,27 @@ export class GoldenHourGauge extends React.PureComponent<GoldenHourGaugeProps, G
         const minutesSinceArrival = getMinutesSinceCheckIn(model.checkInTimestamp);
         const secondsSinceArrival = getSecondsSinceCheckIn(model.checkInTimestamp);
         const progress = getMinutesSinceCheckIn(model.checkInTimestamp) / 60;
-        const checkpoints = this.getCheckpoints();
         const dimensions = Dimensions.get('window');
-        const gaugeSize = { width: dimensions.width, height: (dimensions.height / 2) - 35};
-
+        const gaugeSize = { width: dimensions.width, height: (dimensions.height / 2)};
+        const centerPoint = { x: gaugeSize.width / 2 - 75, y: gaugeSize.height / 2 - 55 };
         return (
-            <View style={{...containerStyle, flex: 1}}>
-                <GoldenHourHeader minutes={minutesSinceArrival}
-                                  seconds={secondsSinceArrival}
+            <View style={{...containerStyle, alignItems: 'center'}}>
+                <ProgressCircle
+                    style={gaugeSize}
+                    progress={progress}
+                    progressColor={COLORS.primary}
+                    startAngle={startAngle}
+                    endAngle={endAngle}
                 />
-                <View style={{flex: 1, alignItems: 'center', flexDirection: 'column', paddingTop: 15}}>
-                    <View style={{flex: 1}} ref="ProgressCircle" onLayout={() => this.onLayout()}>
-                        <ProgressCircle
-                            style={gaugeSize}
-                            progress={progress}
-                            progressColor={COLORS.primary}
-                            startAngle={startAngle}
-                            endAngle={endAngle}
-                        />
-                    </View>
-                    <GoldenHourCountDown left={gaugeSize.width / 2 - 75}
-                                         top={gaugeSize.height / 2 - 35}
-                                         minutes={minutesSinceArrival}
-                                         seconds={secondsSinceArrival}
-                    />
-                    { checkpoints }
-                </View>
+                <GoldenHourCountDown left={centerPoint.x}
+                                     top={centerPoint.y}
+                                     minutes={minutesSinceArrival}
+                                     seconds={secondsSinceArrival}
+                />
+                <GoldenHourCheckPoints model={model}
+                                       gaugeSize={gaugeSize}
+                />
             </View>
         );
-    }
-
-    private onLayout() {
-        const progressCircle: any = this.refs.ProgressCircle;
-        progressCircle.measure((x, y, width, height, pageX, pageY) => {
-            this.setState({
-                progressCircleHeight: height,
-                progressCircleWidth: width,
-                progressCircleX: pageX,
-                progressCircleY: pageY,
-            });
-        });
-    }
-
-    private getCheckpoints() {
-        if (!this.hasGauge) {
-            return undefined;
-        }
-
-        const { model } = this.props;
-        const {progressCircleHeight, progressCircleWidth, progressCircleX, progressCircleY} = this.state;
-        return <GoldenHourCheckPoints model={model}
-                                      gaugeSize={{height: progressCircleHeight, width: progressCircleWidth}}
-                                      x={progressCircleX}
-                                      y={progressCircleY}
-              />;
     }
 }

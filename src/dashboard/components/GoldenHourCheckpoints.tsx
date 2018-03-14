@@ -16,10 +16,10 @@ interface GoldenHourCheckPointsProps {
 
 export const GoldenHourCheckPoints = (props: GoldenHourCheckPointsProps) => {
     const {model, x, y, gaugeSize: { height, width}} = props;
-    const centerPoint = { x: x - 15, y: y - 70};
-    const radius = Math.min(height, width) + 10;
+    const centerPoint = { x: -15, y: -height / 2 - 20};
+    const radius = Math.min(height, width) / 2;
     return (
-        <View style={{flex: 1}}>
+        <View>
             <CheckPointIcon timestamp={model.checkInTimestamp}
                             source={require('../../shared/icons/checkin.png')}
                             top={centerPoint.y + (radius * Math.sin(toRadians(130)))}
@@ -34,8 +34,8 @@ export const GoldenHourCheckPoints = (props: GoldenHourCheckPointsProps) => {
 
             <CheckPointIcon timestamp={model.ctScanTimestamp}
                             source={require('../../shared/icons/ct-scan.png')}
-                            top={centerPoint.y + (radius * Math.sin(toRadians(230)))}
-                            left={centerPoint.x + (radius * Math.cos(toRadians(230)))}
+                            top={centerPoint.y + (radius * Math.sin(toRadians(240)))}
+                            left={centerPoint.x + (radius * Math.cos(toRadians(240)))}
             />
             <CheckPointIcon timestamp={model.ctScanReadTimestamp}
                             source={require('../../shared/icons/ct-scan-read.png')}

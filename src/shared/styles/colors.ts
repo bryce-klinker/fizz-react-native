@@ -5,6 +5,7 @@ export const COLORS = {
     primary: '#ffb500',
     tertiary: '',
     textDefault: '#010101',
+    transparent: 'rgba(255, 255, 255, 0)',
     warning: '#fdb42b',
     white: '#ffffff',
 };
